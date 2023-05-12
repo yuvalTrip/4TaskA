@@ -35,6 +35,23 @@ TEST_CASE("Distance checks"){
     CHECK(evgeni->hits == 110);
     CHECK("evgeni"==evgeni->getName());
 }
+/////////////////////////////////////////////////////////////
+
+void testCowboyShoot() {
+    // Create a Cowboy and an OldNinja
+    Point a(32.3, 44);
+    Point b(1.3, 3.5);
+    Cowboy tom("Tom", a);
+    OldNinja sushi("Sushi", b);
+
+    // Shoot sushi with tom
+    tom.shoot(&sushi);
+
+    // Assert that sushi's health is reduced
+    CHECK(sushi.getHealth() == 140);// 150-10
+}
+/////////////////////////////////////////////////////////////
+
 TEST_CASE("Ninjas initiation") {
         Point b(1.3,3.5);
 //        Point c(64,57), d(12,81);
