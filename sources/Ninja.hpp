@@ -1,6 +1,8 @@
 //
 // Created by yuvalbs on 5/11/23.
 //
+#ifndef INC_4TASKA_Ninja
+#define INC_4TASKA_Ninja
 #include "Character.hpp"
 
 
@@ -19,3 +21,4 @@ namespace ariel{
         //שיסוף slash() – – מקבלת מצביע לאוייב. אם הנינג'ה בחיים והאוייב במרחק של פחות ממטר אחד הנינג'ה תגרום לאוייב נזק של 40 נקודות פגיעה. אחרת, לא ייגרם לאוייב כל נזק.
     };
 }
+#endif //INC_4TASKA_Ninja

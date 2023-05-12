@@ -1,6 +1,8 @@
 //
 // Created by yuvalbs on 5/11/23.
 //
+#ifndef INC_4TASKA_COWB
+#define INC_4TASKA_COWB
 #include "Character.hpp"
 //#include "Ninja.hpp"
 
@@ -13,7 +15,7 @@ namespace ariel{
     private:
         int bullets;
     public:
-//        Cowboy(string name, Point location);//
+        Cowboy(string name, Point location);//constructor,like:Cowboy *tom = new Cowboy("Tom", a);
         void shoot(Character* other);//get pointer to the enemy.
         // If the cowboy is not dead, and left with bulllets he will shoot the enemy . Decrease 10 hit points from the enemy and loose one ball
         // Else - nothing happen to the enemy
@@ -22,3 +24,4 @@ namespace ariel{
 
     };
 }
+#endif //INC_4TASKA_COWB

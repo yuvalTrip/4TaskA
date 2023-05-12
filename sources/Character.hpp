@@ -1,12 +1,14 @@
 //
 // Created by yuvalbs on 5/11/23.
 //
+#ifndef INC_4TASKA_CHAR
+#define INC_4TASKA_CHAR
+
 #include <stdio.h>
 #include "Point.hpp"
 
 using namespace std;
 
-namespace ariel{
 
     class Character{
     private:
@@ -27,4 +29,4 @@ namespace ariel{
 
 
     };
-}
+#endif //INC_4TASKA_CHAR

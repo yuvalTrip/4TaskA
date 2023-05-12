@@ -17,20 +17,37 @@ namespace ariel;
         Point a(1.5,4.5),c(1.5,3.5),d(5.5,4.5);
         CHECK(a.getx()== c.getx());
         CHECK(a.gety() == d.gety());
-        CHECK(b.distance(c) == c.distance(b));
     }
 
-    TEST_CASE("Initiation"){
-        Point a(1.3,4.5),b(1.3,3.5);
-        Point c(64,57), d(12,81);
-        CHECK_NOTHROW(Cowboy *Yvgeni = new Cowboy("Yvgeni", a));
+TEST_CASE("Distance checks"){
+    Point a(4.15831,1.5),b(2.5,4);
+    CHECK(a.distance(b) == b.distance(a)););
+    CHECK(a.distance(b) == 3);
+}
 
-        CHECK_NOTHROW(OldNinja *Amusi = new OldNinja("Amusi", b));
+
+    TEST_CASE("Cowboy initiation") {
+    Point a(1.5, 4.5);
+//    Point b(1.3,3.5);
+//        Point c(64,57), d(12,81);
+    CHECK_NOTHROW(Cowboy * evgeni = new Cowboy("evgeni", a));
+    CHECK(evgeni->bullets == 6);
+    CHECK(evgeni->hits == 110);
+    CHECK("evgeni"==evgeni->getName());
+}
+TEST_CASE("Ninjas initiation") {
+        Point b(1.3,3.5);
+//        Point c(64,57), d(12,81);
+    CHECK_NOTHROW(OldNinja *Yehonatan = new OldNinja("Yehonatan", b));
+
+}
+/////////////////////////////////////////////////////////////
+
         CHECK_NOTHROW(YoungNinja("Alina", c));
         CHECK_NOTHROW(TrainedNinja("Herut", d));
 
         Cowboy *Yvgeni = new Cowboy("Yvgeni", a);
-        CHECK("Yvgeni"==Yvgeni->getName());
+
         CHECK_NOTHROW(Team team_A(Yvgeni));
 
         OldNinja *Amusi = new OldNinja("Amusi", b);

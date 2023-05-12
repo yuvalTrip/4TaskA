@@ -3,18 +3,21 @@
 //
 
 //OldNinja נעות במהירות 8. נוצרות עם 150 נקודות פגיעה.
+#ifndef INC_4TASKA_OLDN
+#define INC_4TASKA_OLDN
 
 #include "Ninja.hpp"
 
 using namespace std;
 
-namespace ariel{
 
     class OldNinja : public Ninja {
     public:
+        OldNinja(string name, Point location);
+
 //        int speed;
 //        int hits;
-//        OldNinja(string name, Point location);
     };
 
-}
+
+#endif //INC_4TASKA_OLDN
