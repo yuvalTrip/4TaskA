@@ -13,18 +13,25 @@ using namespace std;
 
 using namespace std;
 
-namespace ariel;
+namespace ariel {
 
-    class Team{
+    class Team {
 
     public:
-        Team(Character*leader);
+        Team(Character *leader);
+
         Character leader;
-        void add(Character* other);
-        void attack(const Team* other);
+
+        void add(Character *other);
+
+        void attack(const Team *other);
+
         bool stillAlive();
+
         void print();
+
         ~Team();
 
     };
 
+}

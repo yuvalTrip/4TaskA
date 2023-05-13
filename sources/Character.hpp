@@ -12,11 +12,12 @@ using namespace std;
 
     class Character{
     private:
+
+    public:
         Point location;//Character location
         string name; //Character name
         int hits;// Hits points
 
-    public:
         Character(string name, Point location);//Constructor
         bool isAlive();// Is Character alive?== Is Character has more than 0 hits points
         double distance(Character &other);//return distance between 2 Characters

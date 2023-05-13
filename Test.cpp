@@ -31,9 +31,12 @@ TEST_CASE("Distance checks"){
 //    Point b(1.3,3.5);
 //        Point c(64,57), d(12,81);
     CHECK_NOTHROW(Cowboy * evgeni = new Cowboy("evgeni", a));
+    CHECK_NOTHROW(Cowboy * harel = new Cowboy("harel", a));
+
     CHECK(evgeni->bullets == 6);
     CHECK(evgeni->hits == 110);
     CHECK("evgeni"==evgeni->getName());
+   // evgeni.shoot(harel);
 }
 /////////////////////////////////////////////////////////////
 
@@ -44,10 +47,10 @@ void testCowboyShoot() {
     Cowboy tom("Tom", a);
     OldNinja sushi("Sushi", b);
 
-    // Shoot sushi with tom
+    //tom shoot sushi
     tom.shoot(&sushi);
 
-    // Assert that sushi's health is reduced
+    // check that sushi's health is reduced
     CHECK(sushi.getHealth() == 140);// 150-10
 }
 /////////////////////////////////////////////////////////////

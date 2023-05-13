@@ -3,3 +3,24 @@
 //
 
 #include "Cowboy.hpp"
+Cowboy::Cowboy(const string name, const Point location)//constructor,like:Cowboy *tom = new Cowboy("Tom", a);
+{
+    this->name=name;
+    this->location=location;
+}
+
+void Cowboy::shoot(Character* other)//get pointer to the enemy.
+{
+
+}
+bool Cowboy::hasBoolets()// If there are left any bullets in the cowboy gun
+{
+    return true;
+}
+
+void Cowboy::reload()// Reload the gun with 6 new bullets
+{
+
+}
+
+
