@@ -18,7 +18,7 @@ using namespace std;
         string name; //Character name
         int hits;// Hits points
 
-        Character(string name, Point location);//Constructor
+        Character(const string name, const Point location);//Constructor
         Character(); //Empty Constructor
         bool isAlive();// Is Character alive?== Is Character has more than 0 hits points
         double distance(Character &other);//return distance between 2 Characters
