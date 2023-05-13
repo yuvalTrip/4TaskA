@@ -25,7 +25,7 @@ namespace ariel {
 
         void attack(const Team *other);
 
-        bool stillAlive();
+        int stillAlive();
 
         void print();
 

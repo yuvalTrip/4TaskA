@@ -18,8 +18,8 @@ namespace ariel {
 
     }
 
-    bool Team::stillAlive() {
-        return true;
+    int Team::stillAlive() {
+        return 0;
     }
 
     void Team::print() {

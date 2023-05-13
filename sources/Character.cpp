@@ -43,7 +43,7 @@ namespace ariel {
 
     string Character::print()
     {
-        std::cout << name << "," << hits;
+        std::cout << name << "," << hits<< ",";
         location.print();
         return "";
     }
