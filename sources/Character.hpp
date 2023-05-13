@@ -19,6 +19,7 @@ using namespace std;
         int hits;// Hits points
 
         Character(string name, Point location);//Constructor
+        Character(); //Empty Constructor
         bool isAlive();// Is Character alive?== Is Character has more than 0 hits points
         double distance(Character &other);//return distance between 2 Characters
         void hit(int hits);//פגע hit מקבל מספר שלם. מחסיר את כמות נקודות הפגיעה המתאים מהדמות. לא מחזיר דבר. –
