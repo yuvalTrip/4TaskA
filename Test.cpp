@@ -40,7 +40,7 @@ TEST_CASE("Distance checks"){
     CHECK("evgeni"==evgeni->getName());
     CHECK(evgeni->getLocation().getX()==a.getX());
     CHECK(evgeni->getLocation().getY()==a.getY());
-    CHECK(evgeni->print()=="evgeni,110,6");// Print: character name, number of hits, point of the character
+    CHECK(evgeni->print()=="evgeni,110,(1.5,4.5)");// Print: character name, number of hits, point of the character
     CHECK(evgeni->hasBoolets()==true);
     evgeni->shoot(harel);
     CHECK(evgeni->bullets == 5);
@@ -119,20 +119,16 @@ TEST_CASE("Ninjas initiation") {
         }
         CHECK(Yehonatan->hasBoolets()==false);
 
-        //Check slash////////////////////////////////////////////////////////////////////////////
+        //Check slash
         int beforeSlash = Master_shiffo->hits;
         Master_shiffo->move(mr_ping);
         Master_shiffo->slash(mr_ping);
-
-//        int afterSlash = Amusi ->hits;
-//
-//        CHECK(beforeSlash-31==afterSlash);
-//
-//        while( team_B.stillAlive() > 0){
-//            team_A.attack(&team_B);
-//        }
-//
-//        CHECK(team_B.stillAlive()==0);
-//        CHECK(team_A.stillAlive()>0);
+        int afterSlash = Master_shiffo ->hits;
+        CHECK(beforeSlash-40==afterSlash);
+        while( team_B.stillAlive() > 0){
+            team_A.attack(&team_B);
+        }
+        CHECK(team_B.stillAlive()==0);
+        CHECK(team_A.stillAlive()>0);
 
     }

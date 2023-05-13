@@ -33,15 +33,18 @@ namespace ariel {
 
     string Character::getName()// Return character name
     {
-        return "";
+        return name;
     }
 
     Point Character::getLocation()// Return character location
     {
-        return Point();
+        return location;
     }
 
-    string Character::print() {
+    string Character::print()
+    {
+        std::cout << name << "," << hits;
+        location.print();
         return "";
     }
 }

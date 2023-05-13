@@ -12,7 +12,9 @@ namespace ariel {
     void Team::add(Character *other) {
     }
 
-    void Team::attack(const Team *other) {
+    void Team::attack(const Team *other)
+    {
+//        if (other->)
 
     }
 
