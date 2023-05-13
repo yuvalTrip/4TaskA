@@ -9,6 +9,7 @@
 #include <stdexcept>
 
 using namespace std;
+namespace ariel {
 
 
     class Point {
@@ -27,3 +28,4 @@ using namespace std;
         double getX();//Return x value
         double getY();//Return y value
     };
+}

@@ -11,9 +11,8 @@
 
 using namespace std;
 
-using namespace std;
-
 namespace ariel {
+
 
     class Team {
 
