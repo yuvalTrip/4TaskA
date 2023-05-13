@@ -6,7 +6,6 @@
 #include "Ninja.hpp"
 
 using namespace std;
-using namespace ariel;
 
 
     class TrainedNinja : public Ninja {
