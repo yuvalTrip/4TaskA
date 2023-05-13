@@ -14,6 +14,7 @@ namespace ariel {
 
     }
 
+
     void Cowboy::shoot(Character *other)//get pointer to the enemy.
     {
         bullets--;//Decrease by 1
