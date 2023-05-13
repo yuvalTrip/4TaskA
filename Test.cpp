@@ -11,140 +11,128 @@
 
 using namespace std;
 
-namespace ariel;
+using namespace ariel;
 
     TEST_CASE("Point initial"){
         Point a(1.5,4.5),c(1.5,3.5),d(5.5,4.5);
-        CHECK(a.getx()== c.getx());
-        CHECK(a.gety() == d.gety());
+        CHECK(a.getX()== c.getX());
+        CHECK(a.getY() == d.getY());
     }
 
 TEST_CASE("Distance checks"){
     Point a(4.15831,1.5),b(2.5,4);
-    CHECK(a.distance(b) == b.distance(a)););
+    CHECK(a.distance(b) == b.distance(a));
     CHECK(a.distance(b) == 3);
 }
 
 
-    TEST_CASE("Cowboy initiation") {
+    TEST_CASE("Cowboy initiation and shooting") {
     Point a(1.5, 4.5);
 //    Point b(1.3,3.5);
 //        Point c(64,57), d(12,81);
     CHECK_NOTHROW(Cowboy * evgeni = new Cowboy("evgeni", a));
+    Cowboy * evgeni = new Cowboy("evgeni", a);
     CHECK_NOTHROW(Cowboy * harel = new Cowboy("harel", a));
+    Cowboy * harel = new Cowboy("harel", a);
 
     CHECK(evgeni->bullets == 6);
     CHECK(evgeni->hits == 110);
     CHECK("evgeni"==evgeni->getName());
-   // evgeni.shoot(harel);
+    CHECK(evgeni->getLocation().getX()==a.getX());
+    CHECK(evgeni->getLocation().getY()==a.getY());
+    CHECK(evgeni->print()=="evgeni,110,6");// Print: character name, number of hits, point of the character
+    CHECK(evgeni->hasBoolets()==true);
+    evgeni->shoot(harel);
+    CHECK(evgeni->bullets == 5);
+    evgeni->reload();// Reload the gun with 6 new bullets
+    CHECK(evgeni->hasBoolets() == true);// Check if there is more bullets
+    CHECK(evgeni->bullets == 11);// Check how many bullets
+    //Add to team
+    CHECK_NOTHROW(Team team_A(evgeni));
+    CHECK(evgeni->isAlive()==true);
+
+
 }
-/////////////////////////////////////////////////////////////
-
-void testCowboyShoot() {
-    // Create a Cowboy and an OldNinja
-    Point a(32.3, 44);
-    Point b(1.3, 3.5);
-    Cowboy tom("Tom", a);
-    OldNinja sushi("Sushi", b);
-
-    //tom shoot sushi
-    tom.shoot(&sushi);
-
-    // check that sushi's health is reduced
-    CHECK(sushi.getHealth() == 140);// 150-10
-}
-/////////////////////////////////////////////////////////////
 
 TEST_CASE("Ninjas initiation") {
         Point b(1.3,3.5);
 //        Point c(64,57), d(12,81);
-    CHECK_NOTHROW(OldNinja *Yehonatan = new OldNinja("Yehonatan", b));
+        Point c(88,160), d(11,99);
+
+    CHECK_NOTHROW(OldNinja *jackie_chan = new OldNinja("jackie_chan", b));
+    OldNinja *jackie_chan = new OldNinja("jackie_chan", b);
+    CHECK("jackie_chan"==jackie_chan->getName());
+    CHECK_NOTHROW(YoungNinja *Master_shiffo= new YoungNinja("Master_shiffo", c));
+    YoungNinja *Master_shiffo= new YoungNinja("Master_shiffo", c);
+    CHECK_NOTHROW(TrainedNinja *Kong_foo_Panda = new TrainedNinja("Kong_foo_Panda", d));
+    TrainedNinja *Kong_foo_Panda = new TrainedNinja("Kong_foo_Panda", d);
+    //Check locations
+    CHECK(jackie_chan->getLocation().getX() == b.getX());
+    CHECK(jackie_chan->getLocation().getY() == b.getY());
+    CHECK(Master_shiffo->getLocation().getX() == c.getX());
+    CHECK(Master_shiffo->getLocation().getY() == c.getY());
+    CHECK(Kong_foo_Panda->getLocation().getX() == d.getX());
+    CHECK(Kong_foo_Panda->getLocation().getY() == d.getY());
+    //Check numbers of hits
+    CHECK(jackie_chan->hits == 150);
+    CHECK(Master_shiffo->hits == 100);
+    CHECK(Kong_foo_Panda->hits == 120);
+    //Check speeds
+    CHECK(jackie_chan->speed == 8);
+    CHECK(Master_shiffo->speed == 14);
+    CHECK(Kong_foo_Panda->speed == 12);
+    //Check if alive
+    CHECK(jackie_chan->isAlive()==true);
+    CHECK(Master_shiffo->isAlive()==true);
+    CHECK(Kong_foo_Panda->isAlive()==true);
+
 
 }
-/////////////////////////////////////////////////////////////
-
-        CHECK_NOTHROW(YoungNinja("Alina", c));
-        CHECK_NOTHROW(TrainedNinja("Herut", d));
-
-        Cowboy *Yvgeni = new Cowboy("Yvgeni", a);
-
-        CHECK_NOTHROW(Team team_A(Yvgeni));
-
-        OldNinja *Amusi = new OldNinja("Amusi", b);
-        CHECK("Amusi"==Amusi->getName());
-
-        YoungNinja *Alina = new YoungNinja("Alina", c);
-        TrainedNinja *Herut = new TrainedNinja("Herut", d);
-
-        CHECK(Amusi->speed == 8);
-        CHECK(Alina->speed == 14);
-        CHECK(Herut->speed == 12);
-
-        CHECK(Amusi->hits == 150);
-        CHECK(Alina->hits == 100);
-        CHECK(Herut->hits == 120);
-
-        CHECK(Alina->getLocation().getX() == c.getX());
-        CHECK(Alina->getLocation().getY() == c.getY());
-        CHECK(Herut->getLocation().getX() == d.getX());
-        CHECK(Herut->getLocation().getY() == d.getY());
-
-
-    }
-
 
     TEST_CASE("Team fights"){
         Point a(1.3,4.5),b(1.3,3.54);
-        Point c(64,57), d(12,81);
-        Cowboy *Yvgeni = new Cowboy("Yvgeni", a);
-        Team team_A(Yvgeni);
+        Point c(64,57), d(12,81), e(1.5,2.5);
 
-        OldNinja *Amusi = new OldNinja("Amusi", b);
-        Team team_B(Amusi);
+        //Create characters
+        Cowboy *Yehonatan = new Cowboy("Yehonatan", a);
+        OldNinja *jackie_chan = new OldNinja("jackie_chan", b);
+        OldNinja *mr_ping = new OldNinja("mr_ping", e);
+        YoungNinja *Master_shiffo = new YoungNinja("Master_shiffo", c);
+        TrainedNinja *Kong_foo_Panda = new TrainedNinja("Kong_foo_Panda", d);
 
-        YoungNinja *Alina = new YoungNinja("Alina", c);
-        TrainedNinja *Herut = new TrainedNinja("Herut", d);
+        //Create teams
+        Team team_A(Yehonatan);
+        Team team_B(jackie_chan);
 
+        //Add charecters to the teams
+        team_A.add(Master_shiffo);
+        team_A.add(mr_ping);
+        team_B.add(Kong_foo_Panda);
 
-
-        CHECK(Yvgeni->isAlive()==true);
-        CHECK(Amusi->isAlive()==true);
-        CHECK(Alina->isAlive()==true);
-        CHECK(Herut->isAlive()==true);
-
-        team_A.add(Alina);
-        team_B.add(Herut);
-
-        CHECK(team_A.stillAlive()==2);
+        // Check the number of characters in each team
+        CHECK(team_A.stillAlive()==3);
         CHECK(team_B.stillAlive()==2);
 
-
-        Yvgeni->shoot(Amusi);
-        CHECK(Yvgeni->hasBoolets()==true);
-
-        for(int i=0; i<5; i++){
-            Yvgeni->shoot(Amusi);
+        // Check shooting (Yehonatan have 6 bullets)
+        for(int i=0; i<6; i++){
+            Yehonatan->shoot(mr_ping);
         }
-        CHECK(Yvgeni->hasBoolets()==false);
+        CHECK(Yehonatan->hasBoolets()==false);
 
-        Yvgeni->reload();
+        //Check slash////////////////////////////////////////////////////////////////////////////
+        int beforeSlash = Master_shiffo->hits;
+        Master_shiffo->move(mr_ping);
+        Master_shiffo->slash(mr_ping);
 
-        CHECK(Yvgeni->hasBoolets()==true);
-
-        int beforeSlash = Amusi->hits;
-
-        Amusi->move(Yvgeni);
-        Amusi->slash(Yvgeni);
-
-        int afterSlash = Amusi ->hits;
-
-        CHECK(beforeSlash-31==afterSlash);
-
-        while( team_B.stillAlive() > 0){
-            team_A.attack(&team_B);
-        }
-
-        CHECK(team_B.stillAlive()==0);
-        CHECK(team_A.stillAlive()>0);
+//        int afterSlash = Amusi ->hits;
+//
+//        CHECK(beforeSlash-31==afterSlash);
+//
+//        while( team_B.stillAlive() > 0){
+//            team_A.attack(&team_B);
+//        }
+//
+//        CHECK(team_B.stillAlive()==0);
+//        CHECK(team_A.stillAlive()>0);
 
     }

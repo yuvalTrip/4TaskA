@@ -19,7 +19,7 @@ public:
     string name; //Character name
     int hits;// Hits points
 
-    Character(const string name, const Point location);//Constructor
+    Character( string name, Point location);//Constructor
     Character(); //Empty Constructor
     bool isAlive();// Is Character alive?== Is Character has more than 0 hits points
     double distance(Character &other);//return distance between 2 Characters
@@ -29,8 +29,6 @@ public:
     string print();// Print: character name, number of hits, point of the character
     // If character is dead, her number of hit will not be printed and character name will display in ()
     // Before character name a letter will be display N to ninja, C to cowboy
-
-
 };
 
 };

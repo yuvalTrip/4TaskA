@@ -18,6 +18,10 @@ namespace ariel {
 
     bool Cowboy::hasBoolets()// If there are left any bullets in the cowboy gun
     {
+        if (bullets==0)
+        {
+            return false;// No bullets left
+        }
         return true;
     }
 

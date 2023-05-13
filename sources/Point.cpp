@@ -3,6 +3,7 @@
 //
 
 #include "Point.hpp"
+#include <cmath>
 namespace ariel {
 
     Point::Point(const double &x, const double &y) {
@@ -16,15 +17,34 @@ namespace ariel {
         this->y = 0;
     }
 
-    double Point::distance(Point otherPoint) {
-        return 0;
+    double Point::distance(Point otherPoint)
+    {
+        double dx = x - otherPoint.x;
+        double dy = y - otherPoint.y;
+        return std::sqrt(dx * dx + dy * dy);
     }
 
-    void Point::print() {
-        cout << "Legendary" << endl;
+    void Point::print()
+    {
+        std::cout << "(" << x << ", " << y << ")" << std::endl;
     }
 
-    Point Point::moveTowards(Point source, Point destination, double distance) {
+    Point Point::moveTowards(Point source, Point destination, double distance)
+    {
+        Point answer=Point();
+        double dx = destination.x - source.x ;
+        double dy = destination.y - source.y;
+        double currentDist = std::sqrt(dx * dx + dy * dy);
+
+        if (currentDist <= distance) // If current distance is smaller than distance, we will arive to the destination
+        {
+            answer.x = destination.x;
+            answer.y = destination.y;
+        } else {
+            double ratio = distance / currentDist;
+            answer.x = source.x + dx * ratio;
+            answer.y = source.y + dy * ratio;
+        }
         return Point();
     }
 
@@ -35,4 +55,5 @@ namespace ariel {
     double Point::getY() {
         return this->y;
     }
+
 }

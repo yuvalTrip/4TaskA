@@ -13,11 +13,8 @@ namespace ariel {
 
     class OldNinja : public Ninja {
     public:
-        OldNinja(const string name, const Point location);
-
+        OldNinja( string name,  Point location);
         OldNinja();// Empty Constructor (compiler said this is must )
-//        int speed;
-//        int hits;
     };
 
 }
