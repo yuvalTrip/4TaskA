@@ -30,6 +30,10 @@ public:
     // If character is dead, her number of hit will not be printed and character name will display in ()
     // Before character name a letter will be display N to ninja, C to cowboy
     virtual ~Character() = default;
+    Character(const Character& other) = default; // Copy constructor
+    Character& operator=(const Character& other) = default; // Copy assignment operator
+    Character(Character&& other) = default; // Move constructor
+    Character& operator=(Character&& other) = default; // Move assignment operator
 
 };
 
