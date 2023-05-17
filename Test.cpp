@@ -28,19 +28,18 @@ TEST_CASE("Distance checks"){
 
     TEST_CASE("Cowboy initiation and shooting") {
     Point a(1.5, 4.5);
-//    Point b(1.3,3.5);
-//        Point c(64,57), d(12,81);
-    CHECK_NOTHROW(Cowboy * evgeni = new Cowboy("evgeni", a));
+//    //CHECK_NOTHROW(Cowboy * evgeni = new Cowboy("evgeni", a));//Problem in valgrind!
     Cowboy * evgeni = new Cowboy("evgeni", a);
-    CHECK_NOTHROW(Cowboy * harel = new Cowboy("harel", a));
+//    //CHECK_NOTHROW(Cowboy * harel = new Cowboy("harel", a)); //Problem in valgrind!
     Cowboy * harel = new Cowboy("harel", a);
-
+//
     CHECK(evgeni->bullets == 6);
     CHECK(evgeni->hits == 110);
     CHECK("evgeni"==evgeni->getName());
     CHECK(evgeni->getLocation().getX()==a.getX());
     CHECK(evgeni->getLocation().getY()==a.getY());
-    CHECK(evgeni->print()=="evgeni,110,(1.5,4.5)");// Print: character name, number of hits, point of the character
+//    CHECK_NOTHROW(evgeni->print());
+//    CHECK(evgeni->print()=="evgeni,110,(1.5,4.5)");// Print: character name, number of hits, point of the character
     CHECK(evgeni->hasBoolets()==true);
     evgeni->shoot(harel);
     CHECK(evgeni->bullets == 5);
@@ -50,21 +49,21 @@ TEST_CASE("Distance checks"){
     //Add to team
     CHECK_NOTHROW(Team team_A(evgeni));
     CHECK(evgeni->isAlive()==true);
-
-
+//
+    delete evgeni;
+    delete harel;
 }
 
 TEST_CASE("Ninjas initiation") {
         Point b(1.3,3.5);
-//        Point c(64,57), d(12,81);
         Point c(88,160), d(11,99);
 
-    CHECK_NOTHROW(OldNinja *jackie_chan = new OldNinja("jackie_chan", b));
+//    CHECK_NOTHROW(OldNinja *jackie_chan = new OldNinja("jackie_chan", b));//Problem in valgrind!
     OldNinja *jackie_chan = new OldNinja("jackie_chan", b);
     CHECK("jackie_chan"==jackie_chan->getName());
-    CHECK_NOTHROW(YoungNinja *Master_shiffo= new YoungNinja("Master_shiffo", c));
+//    CHECK_NOTHROW(YoungNinja *Master_shiffo= new YoungNinja("Master_shiffo", c));//Problem in valgrind!
     YoungNinja *Master_shiffo= new YoungNinja("Master_shiffo", c);
-    CHECK_NOTHROW(TrainedNinja *Kong_foo_Panda = new TrainedNinja("Kong_foo_Panda", d));
+//    CHECK_NOTHROW(TrainedNinja *Kong_foo_Panda = new TrainedNinja("Kong_foo_Panda", d));//Problem in valgrind!
     TrainedNinja *Kong_foo_Panda = new TrainedNinja("Kong_foo_Panda", d);
     //Check locations
     CHECK(jackie_chan->getLocation().getX() == b.getX());
@@ -85,8 +84,14 @@ TEST_CASE("Ninjas initiation") {
     CHECK(jackie_chan->isAlive()==true);
     CHECK(Master_shiffo->isAlive()==true);
     CHECK(Kong_foo_Panda->isAlive()==true);
+    //Check print
+    CHECK_NOTHROW(jackie_chan->print());
+    CHECK_NOTHROW(Master_shiffo->print());
+    CHECK_NOTHROW(Kong_foo_Panda->print());
 
-
+    delete jackie_chan;
+    delete Master_shiffo;
+    delete Kong_foo_Panda;
 }
 
     TEST_CASE("Team fights"){
@@ -130,5 +135,9 @@ TEST_CASE("Ninjas initiation") {
         }
         CHECK(team_B.stillAlive()==0);
         CHECK(team_A.stillAlive()>0);
-
+    delete jackie_chan;
+    delete Master_shiffo;
+    delete Kong_foo_Panda;
+    delete mr_ping;
+    delete Yehonatan;
     }

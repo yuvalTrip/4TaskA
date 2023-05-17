@@ -43,8 +43,12 @@ namespace ariel {
 
     string Character::print()
     {
-        std::cout << name << "," << hits<< ",";
-        location.print();
-        return "";
+        std::string characterInfo = name + "," + std::to_string(hits) + ", Location: (" + std::to_string(location.getX()) + ", " + std::to_string(location.getY()) + ")";
+
+        std::cout << characterInfo << std::endl; // We can print the result to the console
+        return characterInfo;
     }
+
+
+
 }

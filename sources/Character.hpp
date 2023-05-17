@@ -29,6 +29,8 @@ public:
     string print();// Print: character name, number of hits, point of the character
     // If character is dead, her number of hit will not be printed and character name will display in ()
     // Before character name a letter will be display N to ninja, C to cowboy
+    virtual ~Character() = default;
+
 };
 
 };
